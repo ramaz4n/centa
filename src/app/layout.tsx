@@ -1,5 +1,5 @@
 import { Kanit } from 'next/font/google'
-import './globals.css'
+import './globals.scss'
 
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
@@ -11,6 +11,7 @@ const kanit = Kanit({
 		style: ['normal'],
       variable: '--var-kanit'
 })
+
 
 
 export default function RootLayout({
