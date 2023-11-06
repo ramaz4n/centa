@@ -22,16 +22,20 @@ const Header = () => {
   },[pathname])
 
 
+
   return (
 	 <header className={styles.header}>
 	 	<div className={styles.header__container}>
 			<div className={styles.header__logo}>
-			   <Image
-			      src={logoImg}
-			      width={184}
-			      height={63}
-			      alt="logo"
-			   />
+				<Link href="/">
+				   <Image
+				      src={logoImg}
+				      width={184}
+				      height={63}
+				      sizes="(max-width: 1440px) 138px, 47px"
+				      alt="logo"
+				   />
+				</Link>
 			</div>
 
 			<ul className={styles.header__menu}>
