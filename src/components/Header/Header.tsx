@@ -7,63 +7,159 @@ import Link from 'next/link'
 
 
 import logoImg from '../../../public/images/logo.png'
+import burgerImg from '../../../public/images/burger.svg'
 
 import styles from './Header.module.scss'
 
 
 
 const Header = () => {
+	const [burger, setBurger] = useState(false)
 
    const pathname = usePathname()
 
-
-  useEffect(()=>{
-     console.log(pathname)
-  },[pathname])
-
-
+   const burgerHandler = ()=>{
+		setBurger(true)
+   }
+   const closeMobMenu =()=>{
+		setBurger(false)
+   }
 
   return (
 	 <header className={styles.header}>
 	 	<div className={styles.header__container}>
 			<div className={styles.header__logo}>
-				<Link href="/">
+				<Link className={styles.logo__bg} href="/">
 				   <Image
 				      src={logoImg}
 				      width={184}
 				      height={63}
-				      sizes="(max-width: 1440px) 138px, 47px"
+				      alt="logo"
+				   />
+				</Link>
+				<Link className={styles.logo__md} href="/">
+				   <Image
+				      src={logoImg}
+				      width={138}
+				      height={47}
 				      alt="logo"
 				   />
 				</Link>
 			</div>
 
-			<ul className={styles.header__menu}>
-		      <li className={pathname == '/' ? styles.header__menuActiveItem : styles.header__menuItem} >
-		         <Link 
-		         	className={pathname == '/' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-		         	href="/"
-		         > Главная </Link>
-		      </li>
-		      <li className={pathname == '/products' ? styles.header__menuActiveItem : styles.header__menuItem} >
-		         <Link 
-		        		className={pathname == '/products' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-		         	href="/products"
-		      	> Продукты</Link>
-		      </li>
-		      <li className={pathname == '/gallery' ? styles.header__menuActiveItem : styles.header__menuItem} >
-		         <Link 
-		         	className={pathname == '/gallery' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-		         	href="/gallery"
-		         >Галерея</Link>
-		      </li>
-		      <li className={pathname == '/contacts' ? styles.header__menuActiveItem : styles.header__menuItem} >
-		         <Link 
-		         	className={pathname == '/contacts' ? styles.header__menuActiveItemLink : styles.header__menuItemLink}
-		         	href="/contacts"
-		         >Контакты</Link>
-		      </li>
-			</ul>
+			<div className={styles.header__wrapper}>
+				<ul className={styles.header__menu}>
+			      <li >
+			         <Link 
+			         	className={pathname == '/' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+			         	href="/"
+			         > Главная </Link>
+			      </li>
+			      <li>
+			         <Link 
+			        		className={pathname == '/products' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+			         	href="/products"
+			      	> Продукты</Link>
+			      </li>
+			      <li>
+			         <Link 
+			         	className={pathname == '/gallery' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+			         	href="/gallery"
+			         >Галерея</Link>
+			      </li>
+			      <li>
+			         <Link 
+			         	className={pathname == '/contacts' ? styles.header__menuActiveItemLink : styles.header__menuItemLink}
+			         	href="/contacts"
+			         >Контакты</Link>
+			      </li>
+				</ul>
+
+				<div className={styles.header__catalog}>
+					<Link 
+			        	className={styles.header__ctLink} 
+			         href="https://centa.com.tr/wp-content/uploads/2023/06/CENTA-katalog-2023.pdf"
+			         target="__blank"
+			      > Каталог</Link>
+				</div>
+
+			</div>
+
+			<Image 
+				onClick={burgerHandler}
+				className={styles.burger}
+				src={burgerImg}
+				width={34}
+				height={34}
+				alt="burger"
+			/>
+
+
+
+			<div onClick={closeMobMenu} className={burger? styles.mobileMenu : styles.off}>
+				<div onClick={(e)=>{e.stopPropagation()}} className={burger? styles.mobileMenu__wrapper: styles.mobileMenu__wrapperOff}>
+					<div className={styles.header__logo}>
+						<Link className={styles.logo__md} href="/">
+							<Image
+								src={logoImg}
+								width={138}
+								height={47}
+								alt="logo"
+							/>
+						</Link>
+					</div>
+
+					<div className={styles.header__wrapper}>
+						<ul className={styles.header__menu}>
+						<li >
+							<Link 
+								className={pathname == '/' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+								href="/"
+							> Главная </Link>
+						</li>
+						<li>
+							<Link 
+									className={pathname == '/products' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+								href="/products"
+							> Продукты</Link>
+						</li>
+						<li>
+							<Link 
+								className={pathname == '/gallery' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
+								href="/gallery"
+							>Галерея</Link>
+						</li>
+						<li>
+							<Link 
+								className={pathname == '/contacts' ? styles.header__menuActiveItemLink : styles.header__menuItemLink}
+								href="/contacts"
+							>Контакты</Link>
+						</li>
+						</ul>
+
+						<div className={styles.header__catalog}>
+							<Link 
+								className={styles.header__ctLink} 
+							href="https://centa.com.tr/wp-content/uploads/2023/06/CENTA-katalog-2023.pdf"
+							target="__blank"
+						> Каталог</Link>
+						</div>
+
+					</div>
+
+					<Image 
+						onClick={burgerHandler}
+						className={styles.burger}
+						src={burgerImg}
+						width={34}
+						height={34}
+						alt="burger"
+					/>
+
+			
+				</div>
+			</div>
+
 		</div>
 	 </header>
   );

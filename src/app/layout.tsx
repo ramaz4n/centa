@@ -1,13 +1,13 @@
-import { Kanit } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import './globals.scss'
 
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
 
-const kanit = Kanit({ 
+const montserrat = Montserrat({ 
       weight: ['300', '400', '500', '600', '700'], 
-      subsets: ['latin'],  
+      subsets: ['latin', 'cyrillic'],  
 		style: ['normal'],
       variable: '--var-kanit'
 })
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
    return (
       <html lang="en">
-         <body className={kanit.className}>
+         <body className={montserrat.className}>
             <Header/>
 
 
