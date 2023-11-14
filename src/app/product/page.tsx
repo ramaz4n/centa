@@ -1,5 +1,5 @@
 
-
+import styles from './product.module.scss'
 
 
 export default	function ProductPage(){

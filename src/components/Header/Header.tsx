@@ -1,9 +1,10 @@
 "use client"
 
 import { useRouter, usePathname} from 'next/navigation'
-import {useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
+import  {TfiClose}  from "react-icons/tfi"
 
 
 import logoImg from '../../../public/images/logo.png'
@@ -15,8 +16,11 @@ import styles from './Header.module.scss'
 
 const Header = () => {
 	const [burger, setBurger] = useState(false)
+	
 
    const pathname = usePathname()
+
+
 
    const burgerHandler = ()=>{
 		setBurger(true)
@@ -98,8 +102,53 @@ const Header = () => {
 
 			<div onClick={closeMobMenu} className={burger? styles.mobileMenu : styles.off}>
 				<div onClick={(e)=>{e.stopPropagation()}} className={burger? styles.mobileMenu__wrapper: styles.mobileMenu__wrapperOff}>
-					<div className={styles.header__logo}>
-						<Link className={styles.logo__md} href="/">
+
+					<div className={styles.headerMob__wrapper}>
+						<ul className={styles.headerMob__menu}>
+							<li >
+								<Link 
+									className={pathname == '/' ? styles.headerMob__activeLink : styles.headerMob__link} 
+									href="/"
+									onClick={()=>{setBurger(false)}}
+								> Главная  </Link>
+							</li>
+							<li>
+								<Link 
+									className={pathname == '/products' ? styles.headerMob__activeLink : styles.headerMob__link} 
+									href="/products"
+									onClick={()=>{setBurger(false)}}
+								> Продукты</Link>
+							</li>
+							<li>
+								<Link 
+									className={pathname == '/gallery' ? styles.headerMob__activeLink : styles.headerMob__link} 
+									href="/gallery"
+									onClick={()=>{setBurger(false)}}
+								>Галерея</Link>
+							</li>
+							<li>
+								<Link 
+									className={pathname == '/contacts' ? styles.headerMob__activeLink : styles.headerMob__link}
+									href="/contacts"
+									onClick={()=>{setBurger(false)}}
+								>Контакты</Link>
+							</li>
+						</ul>
+
+						<div className={styles.header__catalog}>
+							<Link 
+								className={styles.header__ctLink} 
+								href="https://centa.com.tr/wp-content/uploads/2023/06/CENTA-katalog-2023.pdf"
+								target="__blank"
+							> Каталог</Link>
+						</div>
+
+
+						<Link 
+							className={styles.logo__md} 
+							href="/" 
+							onClick={()=>{setBurger(false)}}>
+								
 							<Image
 								src={logoImg}
 								width={138}
@@ -107,55 +156,10 @@ const Header = () => {
 								alt="logo"
 							/>
 						</Link>
+						
 					</div>
 
-					<div className={styles.header__wrapper}>
-						<ul className={styles.header__menu}>
-						<li >
-							<Link 
-								className={pathname == '/' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-								href="/"
-							> Главная </Link>
-						</li>
-						<li>
-							<Link 
-									className={pathname == '/products' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-								href="/products"
-							> Продукты</Link>
-						</li>
-						<li>
-							<Link 
-								className={pathname == '/gallery' ? styles.header__menuActiveItemLink : styles.header__menuItemLink} 
-								href="/gallery"
-							>Галерея</Link>
-						</li>
-						<li>
-							<Link 
-								className={pathname == '/contacts' ? styles.header__menuActiveItemLink : styles.header__menuItemLink}
-								href="/contacts"
-							>Контакты</Link>
-						</li>
-						</ul>
-
-						<div className={styles.header__catalog}>
-							<Link 
-								className={styles.header__ctLink} 
-							href="https://centa.com.tr/wp-content/uploads/2023/06/CENTA-katalog-2023.pdf"
-							target="__blank"
-						> Каталог</Link>
-						</div>
-
-					</div>
-
-					<Image 
-						onClick={burgerHandler}
-						className={styles.burger}
-						src={burgerImg}
-						width={34}
-						height={34}
-						alt="burger"
-					/>
-
+					<TfiClose onClick={()=>setBurger(false)} className={styles.mobMenuCloseBtn}/>
 			
 				</div>
 			</div>

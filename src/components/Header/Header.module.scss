@@ -108,7 +108,7 @@
 	color: #000;
 	font-size: 16px;
 	line-height: 19px;
-	transition: all .3s linear;
+	transition: all 1s linear;
 	z-index: 5;
 }
 
@@ -122,12 +122,45 @@
 	color: #000;
 	font-size: 16px;
 	line-height: 19px;
-	transition: all .3s linear;
+	transition: all 1s linear;
 	z-index: 5;
 }
 
 
+.headerMob__wrapper{
+	display: flex;
+	flex-direction: column;
+	padding: 0 30px;
+	row-gap: 30px;
+}
 
+.headerMob__menu{
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.headerMob__activeLink{
+	font-size: 18px;
+	font-weight: 400;
+	color: #595758; 
+	text-transform: uppercase;
+	padding: 10px 20px;
+}
+.headerMob__link{
+	font-size: 18px;
+	font-weight: 400;
+	color: #1A1F52; 
+	text-transform: uppercase;
+	padding: 10px 20px;
+}
+
+.mobMenuCloseBtn{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
 
 
 @media(max-width: 1440px){
