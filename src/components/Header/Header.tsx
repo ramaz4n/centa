@@ -5,10 +5,11 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 import  {TfiClose}  from "react-icons/tfi"
+import classNames from 'classnames';
 
 
-import logoImg from '../../../public/images/logo.png'
-import burgerImg from '../../../public/images/burger.svg'
+import logoImg from '../../../src/static/images/logo.png'
+import burgerImg from '../../../src/static/images/burger.svg'
 
 import styles from './Header.module.scss'
 
@@ -101,7 +102,7 @@ const Header = () => {
 
 
 			<div onClick={closeMobMenu} className={burger? styles.mobileMenu : styles.off}>
-				<div onClick={(e)=>{e.stopPropagation()}} className={burger? styles.mobileMenu__wrapper: styles.mobileMenu__wrapperOff}>
+				<div onClick={(e)=>{e.stopPropagation()}} className={burger? classNames( styles.mobileMenu__wrapperOff, styles.on):  styles.mobileMenu__wrapperOff}>
 
 					<div className={styles.headerMob__wrapper}>
 						<ul className={styles.headerMob__menu}>
